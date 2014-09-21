@@ -38,6 +38,7 @@
   (make-text-node
    *root*
    (consume-until (make-matcher (or (is #\})
+                                    (is #\{)
                                     :tex-tag-start)))))
 
 (defun read-tex-attribute-name ()
