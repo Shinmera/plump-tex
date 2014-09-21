@@ -25,6 +25,9 @@
 (define-matcher tex-block-start (and (is #\{)
                                      (not (prev (is #\\)))))
 
+(define-matcher tex-block-end (and (is #\})
+                                   (not (prev (is #\\)))))
+
 (define-matcher tex-tag-name (or (in #\a #\z) (in #\A #\Z) (is #\@)))
 
 (define-matcher tex-attribute-closing (or (find *whitespace*)
@@ -37,8 +40,8 @@
 (defun read-tex-text ()
   (make-text-node
    *root*
-   (consume-until (make-matcher (or (is #\})
-                                    (is #\{)
+   (consume-until (make-matcher (or :tex-block-start
+                                    :tex-block-end
                                     :tex-tag-start)))))
 
 (defun read-tex-attribute-name ()
