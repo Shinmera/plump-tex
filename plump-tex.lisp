@@ -28,7 +28,7 @@
 (define-matcher tex-block-end (and (is #\})
                                    (not (prev (is #\\)))))
 
-(define-matcher tex-tag-name (or (in #\a #\z) (in #\A #\Z) (is #\@)))
+(define-matcher tex-tag-name (or (in #\a #\z) (in #\A #\Z) (in #\0 #\9) (is #\@)))
 
 (define-matcher tex-attribute-closing (or (find *whitespace*)
                                           (any #\, #\])))
