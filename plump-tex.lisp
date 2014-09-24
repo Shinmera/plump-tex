@@ -51,7 +51,9 @@
   (loop for peek = (peek)
         while peek
         until (char= peek #\})
-        do (or (read-tex-tag) (read-tex-text))
+        do (or (read-tex-tag)
+               (read-tex-block)
+               (read-tex-text))
         finally (consume)))
 
 (defun read-tex-attribute-value ()
