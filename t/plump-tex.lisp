@@ -13,6 +13,9 @@
   (serialize-to-string (plump-tex:parse string)))
 
 (test general
-  (is (equal (parse-print "test") "test")))
+  (is (equal (parse-print "test") "test"))
+  (is (equal (parse-print " \\test") " <test/>"))
+  (is (equal (parse-print " {}") " <div/>"))
+  (is (equal (parse-print " {1}") " <div>1</div>")))
 
 (run! 'tests)
