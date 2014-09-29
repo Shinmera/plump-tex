@@ -19,3 +19,7 @@
   :serial T
   :components ((:file "plump-tex"))
   :depends-on (:plump))
+
+(defmethod perform ((op test-op) (system (eql (asdf:find-system :plump-tex))))
+  (load-system :plump-tex-test)
+  (operate 'test-op :plump-tex-test))
