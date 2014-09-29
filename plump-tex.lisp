@@ -34,18 +34,25 @@
                                           (any #\, #\])))
 
 
+(defun replace-escaped (string)
+  (cl-ppcre:regex-replace-all "\\\\([&%$#_{}~^\\\\])" string "\\1"))
+
 (defun read-tex-name ()
   (consume-until (make-matcher (not :tex-tag-name))))
 
 (defun read-tex-text ()
   (make-text-node
    *root*
-   (consume-until (make-matcher (or :tex-block-start
-                                    :tex-block-end
-                                    :tex-tag-start)))))
+   (replace-escaped
+    (consume-until (make-matcher (or :tex-block-start
+                                     :tex-block-end
+                                     :tex-tag-start))))))
 
 (defun read-tex-attribute-name ()
-  (consume-until (make-matcher (or (is #\=) :tex-attribute-closing))))
+  (replace-escaped
+   (consume-until (make-matcher (or (and (is #\=)
+                                         (not (prev (is #\\))))
+                                    :tex-attribute-closing)))))
 
 (defun read-tex-children ()
   (loop for peek = (peek)
@@ -58,9 +65,11 @@
 
 (defun read-tex-attribute-value ()
   (case (peek)
-    (#\" (prog1 (consume-until (make-matcher (and (is #\") (not (prev (is #\\))))))
+    (#\" (prog1 (replace-escaped
+                 (consume-until (make-matcher (and (is #\") (not (prev (is #\\)))))))
            (consume)))
-    (T (consume-until (make-matcher :tex-attribute-closing)))))
+    (T (replace-escaped
+        (consume-until (make-matcher :tex-attribute-closing))))))
 
 (defun read-tex-attribute ()
   (let ((name (read-tex-attribute-name))
