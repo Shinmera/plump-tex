@@ -66,11 +66,10 @@
   (let ((name (read-tex-attribute-name))
         (next (consume))
         (value ""))
-    (cond
-      ((and next (char= next #\=))
+    (case next
+      ((nil))
+      (#\=
        (setf value (read-tex-attribute-value)))
-      ((not next)
-       (cons name NIL))
       (T
        (unread)))
     (cons name value)))
@@ -79,7 +78,7 @@
   (loop with table = (make-attribute-map)
         for char = (peek)
         do (case char
-             (null
+             ((nil)
               (return table))
              (#\]
               (advance)
