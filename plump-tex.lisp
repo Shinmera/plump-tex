@@ -163,7 +163,7 @@
     (unless (equal (tag-name node) "div")
       (format stream "\\~a" (tag-name node)))
     (serialize (attributes node) stream)
-    (when (children node)
+    (when (> (length (children node)) 0)
       (format stream "{")
       (loop for child across (children node)
             do (serialize child stream))
