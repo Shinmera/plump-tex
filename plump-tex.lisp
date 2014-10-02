@@ -8,7 +8,8 @@
   (:nicknames #:org.tymoonnext.plump.tex)
   (:use #:cl #:plump)
   (:shadow #:parse)
-  (:export #:parse))
+  (:export #:parse
+           #:serialize))
 (in-package #:plump-tex)
 ;; This is pretty much a copy of plump/parser.lisp with changes so that it matches common TeX markup.
 
