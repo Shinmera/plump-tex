@@ -8,7 +8,8 @@
   (:nicknames #:org.tymoonnext.plump.tex)
   (:use #:cl #:plump)
   (:shadow #:parse)
-  (:export #:parse))
+  (:export #:parse
+           #:serialize))
 (in-package #:plump-tex)
 ;; This is pretty much a copy of plump/parser.lisp with changes so that it matches common TeX markup.
 
@@ -153,3 +154,31 @@
       (parse stream :root root)))
   (:method ((input stream) &key root)
     (parse (plump::slurp-stream input) :root root)))
+
+(defgeneric serialize (node &optional stream)
+  (:documentation "Serialize the given node in TeX syntax and print it to the stream.")
+  (:method ((node text-node) &optional (stream *standard-output*))
+    (format stream "~a" (text node)))
+  (:method ((node element) &optional (stream *standard-output*))
+    (unless (equal (tag-name node) "div")
+      (format stream "\\~a" (tag-name node)))
+    (serialize (attributes node) stream)
+    (when (> (length (children node)) 0)
+      (format stream "{")
+      (loop for child across (children node)
+            do (serialize child stream))
+      (format stream "}")))
+  (:method ((table hash-table) &optional (stream *standard-output*))
+    (when (> (hash-table-count table) 0)
+      (format stream "[")
+      (let ((list (loop for key being the hash-keys of table
+                        for val being the hash-values of table
+                        collecting (format nil "~a~@[=~s~]" key val))))
+        (format stream "~{~a~#[~:;, ~]~}" list))
+      (format stream "]")))
+  (:method ((node nesting-node) &optional (stream *standard-output*))
+    (loop for child across (children node)
+          do (serialize child stream)))
+  (:method ((nodes vector) &optional (stream *standard-output*))
+    (loop for child across nodes
+          do (serialize child stream))))
