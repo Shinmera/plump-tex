@@ -7,9 +7,12 @@
 (defpackage #:plump-tex
   (:nicknames #:org.tymoonnext.plump.tex)
   (:use #:cl #:plump)
-  (:shadow #:parse)
-  (:export #:parse
-           #:serialize))
+  (:shadow
+   #:parse
+   #:serialize)
+  (:export
+   #:parse
+   #:serialize))
 (in-package #:plump-tex)
 ;; This is pretty much a copy of plump/parser.lisp with changes so that it matches common TeX markup.
 
@@ -102,13 +105,14 @@
                 (setf (gethash (car entry) table) (cdr entry)))))))
 
 (defun read-tex-standard-tag (name)
-  (let* ((closing (consume))
+  (let* ((closing (peek))
          (attrs (if (and closing (char= closing #\[))
-                    (prog1 (read-tex-attributes)
+                    (prog2 (advance) (read-tex-attributes)
                       (setf closing (consume)))
                     (make-attribute-map))))
     (case closing
       (#\{
+       (advance)
        (let ((*root* (make-element *root* name :attributes attrs)))
          (read-tex-children)
          *root*))
