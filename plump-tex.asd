@@ -18,8 +18,5 @@
   :homepage "https://github.com/Shinmera/plump-tex"
   :serial T
   :components ((:file "plump-tex"))
-  :depends-on (:plump))
-
-(defmethod perform ((op test-op) (system (eql (asdf:find-system :plump-tex))))
-  (load-system :plump-tex-test)
-  (operate 'test-op :plump-tex-test))
+  :depends-on (:plump)
+  :in-order-to ((test-op (test-op :plump-tex-test))))
