@@ -18,4 +18,4 @@
   :homepage "https://github.com/Shinmera/plump-tex"
   :serial T
   :components ((:file "plump-tex-test"))
-  :depends-on (:plump :fiveam))
+  :depends-on (:plump-tex :fiveam))
