@@ -18,5 +18,6 @@
   :homepage "https://github.com/Shinmera/plump-tex"
   :serial T
   :components ((:file "plump-tex"))
-  :depends-on (:plump)
+  :depends-on (:plump
+               :cl-ppcre)
   :in-order-to ((test-op (test-op :plump-tex-test))))
