@@ -108,7 +108,7 @@
   (let* ((closing (peek))
          (attrs (if (and closing (char= closing #\[))
                     (prog2 (advance) (read-tex-attributes)
-                      (setf closing (consume)))
+                      (setf closing (peek)))
                     (make-attribute-map))))
     (case closing
       (#\{
