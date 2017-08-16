@@ -4,10 +4,6 @@
  Author: Nicolas Hafner <shinmera@tymoon.eu>
 |#
 
-(defpackage org.tymoonnext.plump.tex.asdf
-  (:use :cl :asdf))
-(in-package :org.tymoonnext.plump.tex.asdf)
-
 (defsystem plump-tex
   :name "Plump-TeX"
   :version "0.1.0"
