@@ -11,7 +11,9 @@
   :author "Nicolas Hafner <shinmera@tymoon.eu>"
   :maintainer "Nicolas Hafner <shinmera@tymoon.eu>"
   :description "Testing system for Plump-TeX"
-  :homepage "https://github.com/Shinmera/plump-tex"
+  :homepage "https://Shinmera.github.io/plump-tex/"
+  :bug-tracker "https://github.com/Shinmera/plump-tex/issues"
+  :source-control (:git "https://github.com/Shinmera/plump-tex.git")
   :serial T
   :components ((:file "plump-tex-test"))
   :depends-on (:plump-tex :fiveam))
