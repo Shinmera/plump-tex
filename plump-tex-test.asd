@@ -7,7 +7,7 @@
 (defsystem plump-tex-test
   :name "Plump-TeX-Test"
   :version "0.1.0"
-  :license "Artistic"
+  :license "zlib"
   :author "Nicolas Hafner <shinmera@tymoon.eu>"
   :maintainer "Nicolas Hafner <shinmera@tymoon.eu>"
   :description "Testing system for Plump-TeX"

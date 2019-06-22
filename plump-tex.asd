@@ -7,7 +7,7 @@
 (defsystem plump-tex
   :name "Plump-TeX"
   :version "0.1.0"
-  :license "Artistic"
+  :license "zlib"
   :author "Nicolas Hafner <shinmera@tymoon.eu>"
   :maintainer "Nicolas Hafner <shinmera@tymoon.eu>"
   :description "Rudimentary parser turning TeX-like syntax into a Plump DOM."
