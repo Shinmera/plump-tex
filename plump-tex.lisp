@@ -1,9 +1,3 @@
-#|
- This file is a part of Plump-Tex
- (c) 2014 Shirakumo http://tymoon.eu (shinmera@tymoon.eu)
- Author: Nicolas Hafner <shinmera@tymoon.eu>
-|#
-
 (defpackage #:plump-tex
   (:nicknames #:org.tymoonnext.plump.tex)
   (:use #:cl #:plump)
