@@ -5,9 +5,9 @@
   :author "Yukari Hafner <shinmera@tymoon.eu>"
   :maintainer "Yukari Hafner <shinmera@tymoon.eu>"
   :description "Testing system for Plump-TeX"
-  :homepage "https://Shinmera.github.io/plump-tex/"
-  :bug-tracker "https://github.com/Shinmera/plump-tex/issues"
-  :source-control (:git "https://github.com/Shinmera/plump-tex.git")
+  :homepage "https://shinmera.com/docs/plump-tex/"
+  :bug-tracker "https://shinmera.com/project/plump-tex/issues"
+  :source-control (:git "https://shinmera.com/project/plump-tex.git")
   :serial T
   :components ((:file "plump-tex-test"))
   :depends-on (:plump-tex :fiveam))

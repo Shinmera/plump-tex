@@ -5,9 +5,9 @@
   :author "Yukari Hafner <shinmera@tymoon.eu>"
   :maintainer "Yukari Hafner <shinmera@tymoon.eu>"
   :description "Rudimentary parser turning TeX-like syntax into a Plump DOM."
-  :homepage "https://Shinmera.github.io/plump-tex/"
-  :bug-tracker "https://github.com/Shinmera/plump-tex/issues"
-  :source-control (:git "https://github.com/Shinmera/plump-tex.git")
+  :homepage "https://shinmera.com/docs/plump-tex/"
+  :bug-tracker "https://shinmera.com/project/plump-tex/issues"
+  :source-control (:git "https://shinmera.com/project/plump-tex.git")
   :serial T
   :components ((:file "plump-tex"))
   :depends-on (:plump
