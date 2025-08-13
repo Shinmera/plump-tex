@@ -1,8 +1,4 @@
-plump-tex
-=========
+# This repository has [moved](https://shinmera.com/projects/plump-tex)!
+Due to Microsoft's continued enshittification of the platform this repository has been moved to [Codeberg](https://shinmera.com/projects/plump-tex) in August of 2025. It will not receive further updates or patches. **Issues and pull requests will not be looked at here either**, please submit your patches and issue tickets on Codeberg, or send them directly via good old email patches to [shirakumo@tymoon.eu](mailto:shirakumo@tymoon.eu).
 
-Rudimentary parser turning TeX-like syntax into a Plump DOM. This really does nothing more at the moment than dumbly translating TeX tags to DOM nodes, which can then be serialised into XHTML.
-
-```
-(plump:serialize (plump-tex:parse "Oh hey, \\how{are you} \\holding[up=there]{with all that} {exciting stuff} going on"))
-```
+Thanks.
